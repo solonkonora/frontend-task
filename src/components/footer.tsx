@@ -1,22 +1,29 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
-    <footer className="px-6 py-6 border-t border-border">
+    <footer className="bg-foreground/80 text-white px-6 py-6 border-t border-border">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* left section*/}
+        {/* Left section */}
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-xs">K</span>
             </div>
-            <span className="font-semibold text-text-primary">Krea AI</span>
+            <span className="font-semibold text-white">Krea AI</span>
           </div>
         </div>
 
-        {/* right section*/}
-        <div className="flex items-center space-x-2 text-text-secondary text-sm">
+        {/* Right section */}
+        <div className="flex items-center space-x-2 text-gray-300 text-sm">
           <span>curated by</span>
-          <div className="flex items-center space-x-1 font-semibold text-text-primary">
-            <div className="w-4 h-4 bg-foreground rounded-sm"></div>
+          <div className="flex items-center space-x-1 font-semibold text-white text-xl">
+            <Image
+              src="/mobbin-2.png"
+              alt="Mobbin logo"
+              width={34}
+              height={34}
+            />
             <span>Mobbin</span>
           </div>
         </div>
