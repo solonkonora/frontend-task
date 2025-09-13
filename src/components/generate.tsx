@@ -78,47 +78,49 @@ const GenerateSection = () => {
           </Button>
         </div>
 
-        {/* tools grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="group cursor-pointer"
             >
-              <div className="bg-card-bg border border-border rounded-xl p-4 hover:bg-tool-hover transition-colors duration-200 h-full flex flex-col justify-between">
-                <div className="flex items-start justify-between mb-3">
-                  <div className={`w-10 h-10 rounded-lg ${tool.color} flex items-center justify-center`}>
-                    <span className={`font-semibold text-sm ${tool.textColor || 'text-white'}`}>
-                      {tool.name.charAt(0)}
-                    </span>
+              <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-1 hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 h-full">
+                <div className="grid grid-cols-3 gap-0 h-full items-center">
+                  <div className="flex justify-center">
+                    <div className={`w-10 h-10 rounded-2xl ${tool.color} flex items-center justify-center shadow-sm`}>
+                      <span className={`font-bold text-sm ${tool.textColor || 'text-white'}`}>
+                        {tool.name.charAt(0)}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex space-x-1">
-                    {tool.isNew && (
-                      <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-                        New
-                      </Badge>
-                    )}
-                    {tool.isBeta && (
-                      <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
-                        Beta
-                      </Badge>
-                    )}
+
+                  <div className="flex flex-col space-y-1">
+                    <div className="flex items-center gap-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{tool.name}</h3>
+                      {tool.isNew && (
+                        <Badge variant="secondary" className="text-xs bg-blue-50 text-blue-700 border-blue-200 px-0.5 py-0.5 rounded-full">
+                          NEW
+                        </Badge>
+                      )}
+                      {tool.isBeta && (
+                        <Badge variant="secondary" className="text-xs bg-purple-50 text-purple-700 border-purple-200 px-1.5 py-0.5 rounded-full">
+                          BETA
+                        </Badge>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-600 dark:text-gray-400 leading-4">{tool.description}</p>
                   </div>
-                </div>
-                
-                <div className="flex-1">
-                  <h3 className="font-semibold text-text-primary mb-2">{tool.name}</h3>
-                  <p className="text-sm text-text-secondary leading-relaxed">{tool.description}</p>
-                </div>
-                
-                <div className="mt-4 pt-3 border-t border-border">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="w-full justify-center text-primary hover:text-primary/80 hover:bg-primary/10"
-                  >
-                    Open
-                  </Button>
+
+                  {/* Third Column - Centered Open Button */}
+                  <div className="flex justify-center">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg h-7 text-xs font-medium px-3"
+                    >
+                      Open
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
