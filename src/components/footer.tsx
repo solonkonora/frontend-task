@@ -8,7 +8,12 @@ const Footer = () => {
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">K</span>
+              <Image
+                src="/Krea.png"
+                alt="Krea logo"
+                width={34}
+                height={34}
+              />{" "}
             </div>
             <span className="font-semibold text-white">Krea AI</span>
           </div>
