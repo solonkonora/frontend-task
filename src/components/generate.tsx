@@ -11,7 +11,8 @@ import {
   RotateCcw, 
   Palette,
   Star,
-  Heart
+  Heart,
+  ChevronDown
 } from "lucide-react";
 
 interface ToolCard {
@@ -94,20 +95,22 @@ const GenerateSection = () => {
       {/* Generate Section */}
       <section className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-3">
             <h2 className="text-2xl font-bold text-text-primary">Generate</h2>
-            <Button variant="ghost" className="text-primary hover:text-primary/80">
-              View all
-            </Button>
+            <div className="flex items-center">
+              <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-transparent">
+               <ChevronDown /> Show all
+              </Button>
+            </div>
           </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
           {tools.map((tool, index) => (
             <div
               key={index}
               className="group cursor-pointer"
             >
-              <div className="bg-white dark:bg-gray-800 p-4 h-full">
+              <div className="bg-white dark:bg-gray-800 p-1 h-full">
                 <div className="flex items-center gap-1.5 h-full">
                   <div className="flex justify-center">
                     <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center shadow-sm`}>
