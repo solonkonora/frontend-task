@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Footer from "../../components/footer";
 import GenerateSection from "@/components/generate";
+import HeroSection from "@/components/hero";
 
 export default function LandingPage() {
   return (
@@ -17,6 +18,7 @@ export default function LandingPage() {
           Go to Home
         </Link>
       </section>
+      <HeroSection />
       <GenerateSection />
       <Footer />
     </main>
