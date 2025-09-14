@@ -9,7 +9,9 @@ import {
   Bot, 
   ArrowUp, 
   RotateCcw, 
-  Palette 
+  Palette,
+  Star,
+  Heart
 } from "lucide-react";
 
 interface ToolCard {
@@ -88,14 +90,16 @@ const tools: ToolCard[] = [
 
 const GenerateSection = () => {
   return (
-    <section className="px-6 py-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-text-primary">Generate</h2>
-          <Button variant="ghost" className="text-primary hover:text-primary/80">
-            View all
-          </Button>
-        </div>
+    <>
+      {/* Generate Section */}
+      <section className="px-6 py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-text-primary">Generate</h2>
+            <Button variant="ghost" className="text-primary hover:text-primary/80">
+              View all
+            </Button>
+          </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {tools.map((tool, index) => (
@@ -142,8 +146,30 @@ const GenerateSection = () => {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+       {/* Gallery Section */}
+      <section className="px-6 py-1 border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Gallery</h2>
+            
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">
+                <Star className="w-5 h-5 text-black" />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Featured</span>
+              </div>
+              <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">
+                <Heart className="w-5 h-5 text-black" />
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Favorites</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </>
   );
 };
 
