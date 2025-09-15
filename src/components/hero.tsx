@@ -13,7 +13,6 @@ interface HeroCard {
   description: string;
   buttonText: string;
   backgroundImage: string;
-  gradient: string;
 }
 
 const heroCards: HeroCard[] = [
@@ -24,8 +23,7 @@ const heroCards: HeroCard[] = [
     subtitle: "WAN 2.2 Image generation",
     description: "Generate complex images with the Gan-2 rnn col powerful WAN 2.2 model. Enhanced prompt understanding and high quality outputs.",
     buttonText: "Try WAN 2.2",
-    backgroundImage: "/hero-bg-1.jpg",
-    gradient: "bg-gradient-to-br from-purple-600/80 to-blue-800/80"
+    backgroundImage: "/wan.jpg",
   },
   {
     id: 2,
@@ -34,8 +32,7 @@ const heroCards: HeroCard[] = [
     subtitle: "FLUX.1 Krea",
     description: "White image in the second to FLUX.1 krea model public. Source control on your model training. Real-time technical report, opt.",
     buttonText: "Try FLUX.1",
-    backgroundImage: "/hero-bg-2.jpg",
-    gradient: "bg-gradient-to-br from-orange-600/80 to-red-700/80"
+    backgroundImage: "/wan1.jpg",
   },
   {
     id: 3,
@@ -44,8 +41,7 @@ const heroCards: HeroCard[] = [
     subtitle: "Advanced AI Generation",
     description: "Experience the next generation of AI image creation with DALLE 3. Superior quality and unprecedented creative control.",
     buttonText: "Try DALLE 3",
-    backgroundImage: "/hero-bg-3.jpg",
-    gradient: "bg-gradient-to-br from-green-600/80 to-teal-700/80"
+    backgroundImage: "/wan2.jpg",
   }
 ];
 
@@ -86,11 +82,8 @@ const HeroSection = () => {
                       priority={card.id === 1}
                     />
                   </div>
-                  
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 ${card.gradient}`}></div>
-                  
-                  {/* Background Decoration */}
+               
+                  {/* background decoration */}
                   <div className="absolute inset-0 opacity-20">
                     <div className="absolute top-4 left-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
                     <div className="absolute bottom-4 right-4 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
@@ -104,8 +97,8 @@ const HeroSection = () => {
                     
                     <div className="flex-1 flex flex-col justify-center">
                       <h2 className="text-white text-6xl font-bold mb-6 leading-tight text-center">{card.title}</h2>
-                      <h3 className="text-white/90 text-2xl font-medium mb-4">{card.subtitle}</h3>
-                      <div className="flex items-start justify-between mb-8">
+                      <h3 className="text-white text-2xl font-medium mb-4">{card.subtitle}</h3>
+                      <div className="flex items-start justify-between">
                         <p className="text-white/80 text-base max-w-2xl leading-relaxed flex-1 mr-8">
                           {card.description}
                         </p>
@@ -122,18 +115,9 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Navigation Overlay */}
-          <div className="absolute bottom-6 left-0 right-0 z-20">
-            <div className="flex items-center justify-center px-12">
-              {/* Section Title */}
-              <div>
-                <h1 className="text-white text-4xl font-bold">Generate</h1>
-              </div>
-            </div>
-          </div>
+          {/* navigation overlay */}
         </div>
 
-        {/* Bottom Navigation */}
         <div className="flex items-center justify-between">
           {/* Dots Navigation */}
           <div className="flex justify-center flex-1">
