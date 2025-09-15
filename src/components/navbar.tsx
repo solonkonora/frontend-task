@@ -1,10 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Bell, User, Zap, Brain, Compass, Camera, Settings, Images, HelpCircle, ChevronDown, Home } from "lucide-react";
+import { Bell, User, Zap, Brain, Compass, Camera, Settings, Images, HelpCircle, ChevronDown, Home, Sun, Moon } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Add logic to toggle theme in your app
+    document.documentElement.classList.toggle('dark');
+  };
   return (
     <nav className="bg-white border-b border-gray-200 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -74,9 +82,19 @@ const Navbar = () => {
             <User className="w-4 h-4 text-gray-600 " />
           </Button>
 
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-medium">JD</span>
-          </div>
+          {/* Theme Switcher */}
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={toggleTheme}
+            className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+          >
+            {isDarkMode ? (
+              <Sun className="w-4 h-4 text-yellow-500" />
+            ) : (
+              <Moon className="w-4 h-4 text-gray-600" />
+            )}
+          </Button>
         </div>
       </div>
 

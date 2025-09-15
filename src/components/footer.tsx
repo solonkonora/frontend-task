@@ -2,12 +2,11 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground/80 text-white px-6 py-6 border-t border-border">
+    <footer className="bg-foreground/80 dark:bg-gray-900 text-gray-900 dark:text-white px-6 py-6 border-t border-gray-200 dark:border-gray-700 transition-colors">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Left section */}
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
+            <div className="w-6 h-6 bg-blue-500 dark:bg-blue-600 rounded-lg flex items-center justify-center">
               <Image
                 src="/Krea.png"
                 alt="Krea logo"
@@ -15,14 +14,13 @@ const Footer = () => {
                 height={34}
               />{" "}
             </div>
-            <span className="font-semibold text-white">Krea AI</span>
+            <span className="text-white font-semibold text-gray-900 dark:text-white">Krea AI</span>
           </div>
         </div>
 
-        {/* Right section */}
-        <div className="flex items-center space-x-2 text-gray-300 text-sm">
+        <div className="flex items-center space-x-2 text-white dark:text-gray-300 text-sm">
           <span>curated by</span>
-          <div className="flex items-center space-x-1 font-semibold text-white text-xl">
+          <div className="flex items-center space-x-1 font-semibold text-white-900 dark:text-white text-xl">
             <Image
               src="/mobbin-2.png"
               alt="Mobbin logo"

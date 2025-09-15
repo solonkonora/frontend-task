@@ -23,7 +23,7 @@ const heroCards: HeroCard[] = [
     subtitle: "WAN 2.2 Image generation",
     description: "Generate complex images with the Gan-2 rnn col powerful WAN 2.2 model. Enhanced prompt understanding and high quality outputs.",
     buttonText: "Try WAN 2.2",
-    backgroundImage: "/wan.jpg",
+    backgroundImage: "/wan2.jpg",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const heroCards: HeroCard[] = [
     subtitle: "Advanced AI Generation",
     description: "Experience the next generation of AI image creation with DALLE 3. Superior quality and unprecedented creative control.",
     buttonText: "Try DALLE 3",
-    backgroundImage: "/wan2.jpg",
+    backgroundImage: "/wan.jpg",
   }
 ];
 
