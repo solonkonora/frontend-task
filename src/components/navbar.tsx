@@ -78,10 +78,6 @@ const Navbar = () => {
             <Bell className="w-4 h-4 text-gray-600" />
           </Button>
 
-          <Button variant="ghost" size="sm" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
-            <User className="w-4 h-4 text-gray-600 " />
-          </Button>
-
           {/* Theme Switcher */}
           <Button 
             variant="ghost" 
@@ -95,6 +91,10 @@ const Navbar = () => {
               <Moon className="w-4 h-4 text-gray-600" />
             )}
           </Button>
+
+           <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-sm font-medium"></span>
+            </div>
         </div>
       </div>
 

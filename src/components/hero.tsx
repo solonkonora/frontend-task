@@ -64,7 +64,7 @@ const HeroSection = () => {
     <section className="px-6 py-8">
       <div className="max-w-7xl mx-auto">
         {/* Carousel Container */}
-        <div className="relative overflow-hidden rounded-2xl mb-8">
+        <div className="relative overflow-hidden rounded-2xl mb-2">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -72,7 +72,6 @@ const HeroSection = () => {
             {heroCards.map((card) => (
               <div key={card.id} className="w-full flex-shrink-0 relative">
                 <div className="relative h-96 overflow-hidden">
-                  {/* Background Image */}
                   <div className="absolute inset-0">
                     <Image
                       src={card.backgroundImage}
@@ -114,8 +113,6 @@ const HeroSection = () => {
               </div>
             ))}
           </div>
-
-          {/* navigation overlay */}
         </div>
 
         <div className="flex items-center justify-between">
@@ -140,7 +137,7 @@ const HeroSection = () => {
               variant="ghost" 
               size="sm"
               onClick={prevSlide}
-              className="hover:bg-gray-100 p-3"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
@@ -149,7 +146,7 @@ const HeroSection = () => {
               variant="ghost" 
               size="sm"
               onClick={nextSlide}
-              className="hover:bg-gray-100 p-3"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
