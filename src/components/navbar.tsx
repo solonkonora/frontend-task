@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Bell, User, Sparkles, Zap, Brain, Compass, Camera, Settings, Images, HelpCircle, ChevronDown, Home } from "lucide-react";
+import { Bell, User, Zap, Brain, Compass, Camera, Settings, Images, HelpCircle, ChevronDown, Home } from "lucide-react";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -54,7 +54,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Right Section - Search, Notifications, Profile */}
+        {/* Notifications, Profile */}
         <div className="flex items-center space-x-4">
           <div className="hidden md:flex items-center space-x-1 items-center bg-gray-100 rounded-lg py-2 px-2">
             <Images className="w-4 h-4 text-gray-600" />
