@@ -66,11 +66,11 @@ const Navbar = () => {
             <span className="text-sm font-medium text-gray-700">Support</span>
           </div>
 
-          <Button variant="ghost" size="sm" className="p-2">
+          <Button variant="ghost" size="sm" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
             <Bell className="w-4 h-4 text-gray-600" />
           </Button>
 
-          <Button variant="ghost" size="sm" className="p-2">
+          <Button variant="ghost" size="sm" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
             <User className="w-4 h-4 text-gray-600 " />
           </Button>
 
