@@ -59,7 +59,7 @@ const tools: ToolCard[] = [
   {
     name: "CAI",
     description: "Stable diffusion models and generative",
-    isBeta: true,
+    isNew: true,
     color: "bg-purple-600",
     textColor: "text-white",
     icon: Bot
@@ -67,7 +67,7 @@ const tools: ToolCard[] = [
   {
     name: "Video Upscaler",
     description: "AI face-to-face swap for videos",
-    isBeta: true,
+    isNew: true,
     color: "bg-green-600",
     textColor: "text-white",
     icon: ArrowUp
@@ -75,7 +75,7 @@ const tools: ToolCard[] = [
   {
     name: "Motion Transfer",
     description: "Motion and nature characters",
-    isBeta: true,
+    isNew: true,
     color: "bg-gray-800",
     textColor: "text-white",
     icon: RotateCcw
@@ -110,10 +110,10 @@ const GenerateSection = () => {
               key={index}
               className="group cursor-pointer"
             >
-              <div className="bg-white dark:bg-gray-800 p-1 h-full">
+              <div className="px-4 py-2 h-full">
                 <div className="flex items-center gap-1.5 h-full">
                   <div className="flex justify-center">
-                    <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center shadow-sm`}>
+                    <div className={`w-10 h-10 rounded ${tool.color} flex items-center justify-center shadow-sm`}>
                       <tool.icon className={`w-5 h-5 ${tool.textColor || 'text-white'}`} />
                     </div>
                   </div>
@@ -122,13 +122,8 @@ const GenerateSection = () => {
                     <div className="flex items-center gap-1">
                       <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{tool.name}</h3>
                       {tool.isNew && (
-                        <Badge variant="secondary" className="text-xs bg-blue-50 text-blue-700 border-blue-200 px-1.5 py-0.5 rounded-full">
+                        <Badge variant="secondary" className="text-[10px] bg-blue-600 text-white px-1.5 py-0.5 rounded-full border-0">
                           NEW
-                        </Badge>
-                      )}
-                      {tool.isBeta && (
-                        <Badge variant="secondary" className="text-xs bg-purple-50 text-purple-700 border-purple-200 px-1.5 py-0.5 rounded-full">
-                          BETA
                         </Badge>
                       )}
                     </div>
@@ -161,11 +156,11 @@ const GenerateSection = () => {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">
                 <Star className="w-5 h-5 text-black" />
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Featured</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Legal</span>
               </div>
               <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600">
                 <Heart className="w-5 h-5 text-black" />
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Favorites</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Pricing</span>
               </div>
             </div>
           </div>
