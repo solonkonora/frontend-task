@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -57,7 +58,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Marquee-style Continuous Carousel */}
         <div 
-          className="relative overflow-hidden rounded-2xl mb-8"
+          className="relative overflow-hidden rounded-2xl mb-2"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -90,18 +91,15 @@ const HeroSection = () => {
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   
-                  {/* Content */}
                   <div className="relative z-10 h-full flex flex-col justify-between p-6">
-                    {/* Tag */}
                     <div>
-                      <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+                      <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider text-background">
                         {card.tag}
                       </span>
                     </div>
                     
-                    {/* Title and Content */}
                     <div className="space-y-3">
-                      <h2 className="text-white font-bold text-3xl leading-tight justify-center flex">
+                      <h2 className="text-white font-bold text-5xl leading-tight justify-center flex">
                         {card.title}
                       </h2>
                       
@@ -109,14 +107,15 @@ const HeroSection = () => {
                         {card.subtitle}
                       </h3>
                       
-                      <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
-                        {card.description}
-                      </p>
-                      
-                      {/* CTA Button */}
-                      <Button className="bg-background hover:bg-white/30 text-foreground px-4 py-2 font-medium text-sm font-semibold rounded-full">
-                        {card.buttonText}
-                      </Button>
+                      <div className="flex items-start justify-between gap-4">
+                        <p className="text-white/80 text-sm leading-relaxed line-clamp-3 w-1/2">
+                          {card.description}
+                        </p>
+                        
+                        <Button className="bg-background hover:bg-white/30 text-foreground px-4 py-2 font-medium text-sm font-semibold rounded-full flex-shrink-0">
+                          {card.buttonText}
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -125,13 +124,35 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Simple indicator - shows it's a continuous marquee */}
-        <div className="flex justify-center">
-          <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-            <span className="text-xs text-gray-600 dark:text-gray-300 font-medium">
-              Continuous Scroll • Hover to Pause
-            </span>
+        {/* Navigation dots and controls */}
+        <div className="flex items-center justify-between">
+          <div className="flex justify-center flex-1">
+            <div className="flex space-x-2">
+              {heroCards.map((_, index) => (
+                <button
+                  key={index}
+                  className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-400 transition-colors"
+                />
+              ))}
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              size="sm"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </div>
