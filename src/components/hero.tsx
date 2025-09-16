@@ -46,7 +46,6 @@ const heroCards: HeroCard[] = [
 ];
 
 const HeroSection = () => {
-  // Remove discrete state management for true continuous scrolling
   const [isPlaying, setIsPlaying] = useState(true);
 
   // Pause/resume on hover for marquee
@@ -74,10 +73,9 @@ const HeroSection = () => {
               <div 
                 key={`${card.id}-${index}`}
                 className="flex-shrink-0 mx-3"
-                style={{ width: '66.67vw' }} // Each card takes 2/3 of viewport width
+                style={{ width: '66.67vw' }} 
               >
                 <div className="relative h-96 overflow-hidden rounded-xl">
-                  {/* Background Image */}
                   <div className="absolute inset-0">
                     <Image
                       src={card.backgroundImage}
@@ -93,7 +91,7 @@ const HeroSection = () => {
                   
                   <div className="relative z-10 h-full flex flex-col justify-between p-6">
                     <div>
-                      <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider text-background">
+                      <span className="inline-block px-3 py-1 text-xs uppercase tracking-wider text-white">
                         {card.tag}
                       </span>
                     </div>

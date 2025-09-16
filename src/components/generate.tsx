@@ -19,7 +19,6 @@ interface ToolCard {
   name: string;
   description: string;
   isNew?: boolean;
-  isBeta?: boolean;
   color: string;
   textColor?: string;
   icon: React.ComponentType<{ className?: string }>;
