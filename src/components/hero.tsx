@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -46,67 +45,78 @@ const heroCards: HeroCard[] = [
 ];
 
 const HeroSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  // Remove discrete state management for true continuous scrolling
+  const [isPlaying, setIsPlaying] = useState(true);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroCards.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroCards.length) % heroCards.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+  // Pause/resume on hover for marquee
+  const handleMouseEnter = () => setIsPlaying(false);
+  const handleMouseLeave = () => setIsPlaying(true);
 
   return (
     <section className="px-6 py-8">
       <div className="max-w-7xl mx-auto">
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden rounded-2xl mb-2">
+        {/* Marquee-style Continuous Carousel */}
+        <div 
+          className="relative overflow-hidden rounded-2xl mb-8"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Continuous scrolling container */}
           <div 
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            className={`flex ${isPlaying ? 'animate-marquee' : 'animate-marquee-paused'}`}
+            style={{ 
+              width: 'max-content',
+            }}
           >
-            {heroCards.map((card) => (
-              <div key={card.id} className="w-full flex-shrink-0 relative">
-                <div className="relative h-96 overflow-hidden">
+            {/* Duplicate cards multiple times for seamless infinite scroll */}
+            {[...heroCards, ...heroCards, ...heroCards].map((card, index) => (
+              <div 
+                key={`${card.id}-${index}`}
+                className="flex-shrink-0 mx-3"
+                style={{ width: '66.67vw' }} // Each card takes 2/3 of viewport width
+              >
+                <div className="relative h-96 overflow-hidden rounded-xl">
+                  {/* Background Image */}
                   <div className="absolute inset-0">
                     <Image
                       src={card.backgroundImage}
                       alt={card.title}
                       fill
                       className="object-cover"
-                      priority={card.id === 1}
+                      priority={index < 3}
                     />
                   </div>
                
-                  {/* background decoration */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-4 left-4 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-                    <div className="absolute bottom-4 right-4 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
-                  </div>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   
                   {/* Content */}
-                  <div className="relative z-10 h-full p-12 flex flex-col justify-between">
+                  <div className="relative z-10 h-full flex flex-col justify-between p-6">
+                    {/* Tag */}
                     <div>
-                      <span className="text-white/70 text-xs font-medium uppercase tracking-wider">{card.tag}</span>
+                      <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/90 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
+                        {card.tag}
+                      </span>
                     </div>
                     
-                    <div className="flex-1 flex flex-col justify-center">
-                      <h2 className="text-white text-6xl font-bold mb-6 leading-tight text-center">{card.title}</h2>
-                      <h3 className="text-white text-2xl font-medium mb-4">{card.subtitle}</h3>
-                      <div className="flex items-start justify-between">
-                        <p className="text-white/80 text-base max-w-2xl leading-relaxed flex-1 mr-8">
-                          {card.description}
-                        </p>
-                        <div className="flex-shrink-0">
-                          <Button className="bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-6 py-3 text-base font-medium">
-                            {card.buttonText}
-                          </Button>
-                        </div>
-                      </div>
+                    {/* Title and Content */}
+                    <div className="space-y-3">
+                      <h2 className="text-white font-bold text-3xl leading-tight justify-center flex">
+                        {card.title}
+                      </h2>
+                      
+                      <h3 className="text-white/90 text-lg font-medium">
+                        {card.subtitle}
+                      </h3>
+                      
+                      <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
+                        {card.description}
+                      </p>
+                      
+                      {/* CTA Button */}
+                      <Button className="bg-background hover:bg-white/30 text-foreground px-4 py-2 font-medium text-sm font-semibold rounded-full">
+                        {card.buttonText}
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -115,44 +125,37 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          {/* Dots Navigation */}
-          <div className="flex justify-center flex-1">
-            <div className="flex space-x-2">
-              {heroCards.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentSlide ? 'bg-gray-800' : 'bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-          
-          {/* Navigation Controls - Right */}
-          <div className="flex items-center gap-2">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={prevSlide}
-              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={nextSlide}
-              className="w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full p-0 flex items-center justify-center"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+        {/* Simple indicator - shows it's a continuous marquee */}
+        <div className="flex justify-center">
+          <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
+            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+            <span className="text-xs text-gray-600 dark:text-gray-300 font-medium">
+              Continuous Scroll • Hover to Pause
+            </span>
           </div>
         </div>
       </div>
+
+      {/* Add CSS animations */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+
+        .animate-marquee-paused {
+          animation: marquee 20s linear infinite;
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };

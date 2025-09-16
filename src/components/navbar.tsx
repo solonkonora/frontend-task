@@ -10,7 +10,6 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    // Add logic to toggle theme in your app
     document.documentElement.classList.toggle('dark');
   };
   return (
