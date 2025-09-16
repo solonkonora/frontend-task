@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-white dark:text-gray-300 text-sm">
+        <div className="flex items-center font-semibold space-x-2 text-white dark:text-gray-300 text-sm">
           <span>curated by</span>
           <div className="flex items-center space-x-1 font-semibold text-white-900 dark:text-white text-xl">
             <Image
